@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "hexlet-code"
+version = "0.1.0"
+description = "Task manager"
+authors = ["alllexxx1 <alekkorpachyov@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/alllexxx1/python-project-52.git"
+classifiers = [
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+packages = [
+	{ include = "task_manager" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.0.1"
+python-dotenv = "^1.0.0"
+dj-database-url = "^2.1.0"
+psycopg2-binary = "^2.9.9"
+whitenoise = "^6.6.0"
+gunicorn = "^21.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
