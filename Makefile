@@ -17,5 +17,8 @@ lint:
 collect-static:
 	poetry run python manage.py collectstatic --no-input
 
+make-migrations:
+	poetry run python manage.py makemigrations
+
 migrate:
 	poetry run python manage.py migrate

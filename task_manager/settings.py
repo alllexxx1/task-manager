@@ -30,8 +30,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-HOST = os.getenv('HOST')
-ALLOWED_HOSTS = [] if DEBUG else [HOST]
+ALLOWED_HOSTS = []
+
+HOSTNAME = os.getenv('HOSTNAME')
+if not DEBUG:
+    ALLOWED_HOSTS.append(HOSTNAME)
 
 
 # Application definition
@@ -127,14 +130,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STORAGES = {
-        # ...
-        "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-        },
-    }
+# if not DEBUG:
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     STORAGES = {
+#         "staticfiles": {
+#             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#         },
+#     }
 
 
 # Default primary key field type
