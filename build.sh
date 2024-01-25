@@ -3,4 +3,6 @@
 set -o errexit
 
 make install
+
+make collect-static
 make migrate
