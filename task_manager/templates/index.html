@@ -1,11 +1,16 @@
 {% extends "layout.html" %}
+{% load i18n %}
 
 {% block content %}
-<div class="container wrapper flex-grow-1">
-    <div class="row">
-        <div class="col">
-            <h1>Hello, World</h1>
+<main class="container flex-grow-1">
+    <h1 class="my-4"></h1>
+    <div class="card">
+        <div class="card-body p-5 bg-light">
+          <h1 class="display-4">{% translate "Hello from Hexlet" %}</h1>
+          <p class="lead my-3">{% translate "Practical programming courses" %}</p>
+          <hr>
+          <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold text-decoration-none">{% translate "Learn more..." %}</a></p>
         </div>
     </div>
-</div>
+</main>
 {% endblock %}
