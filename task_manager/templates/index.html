@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
 {% load i18n %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 <main class="container flex-grow-1">
+    <div class="mt-4">
+        {% bootstrap_messages %}
+    </div>
     <h1 class="my-4"></h1>
     <div class="card">
         <div class="card-body p-5 bg-light">
-          <h1 class="display-4">{% translate "Hello from Hexlet" %}</h1>
-          <p class="lead my-3">{% translate "Practical programming courses" %}</p>
+          <h1 class="display-4">{% translate "Little introduction" %}</h1>
+          <p class="lead my-3">{% translate "I'm not quite aware yet what I'm gonna write here" %}</p>
           <hr>
           <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold text-decoration-none">{% translate "Learn more..." %}</a></p>
         </div>

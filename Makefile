@@ -22,3 +22,24 @@ make-migrations:
 
 migrate:
 	poetry run python manage.py migrate
+
+make-messages:
+	poetry run django-admin makemessages --ignore="static" --ignore=".env" -l ru
+
+compile-messages:
+	poetry run django-admin compilemessages
+
+shell:
+	poetry run python manage.py shell_plus
+
+run-tests:
+	poetry run python ./manage.py test .
+
+coverage:
+	poetry run coverage run --source='.' ./manage.py test .
+
+coverage-report:
+	poetry run coverage report
+
+coverage-report-html:
+	poetry run coverage html

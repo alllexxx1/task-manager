@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+Users
+{% endblock %}
+
+{% block content %}
+<main class="container flex-grow-1">
+    <div class="mt-4">
+        {% bootstrap_messages %}
+    </div>
+    <h1 class="my-4"></h1>
+    <h2>{% translate "Users" %}</h2>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <caption>{% translate "List of users" %}</caption>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>{% translate "Username" %}</th>
+                            <th>{% translate "Full name" %}</th>
+                            <th>{% translate "Date of creation" %}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if user.is_authenticated %}
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.get_full_name }}</td>
+                            <td>{{ user.date_joined }}</td>
+                            <td>
+                                <a href="{% url 'users:update' pk=user.pk %}" class="text-decoration-none">{% translate "Edit" %}</a>
+                                <br>
+                                <a href="{% url 'users:delete' pk=user.pk %}" class="text-decoration-none">{% translate "Delete" %}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    {% else %}
+
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.get_full_name }}</td>
+                            <td>{{ user.date_joined }}</td>
+                            <td>
+                                <a href="/" class="text-decoration-none text-muted">{% translate "Edit" %}</a>
+                                <br>
+                                <a href="/" class="text-decoration-none text-muted">{% translate "Delete" %}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
