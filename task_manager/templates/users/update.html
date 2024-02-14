@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block form %}
-<form action="{% url 'users:update' pk=user_pk %}" method="post" class="form">
+<form action="{% url 'users:update' pk=user.pk %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
 
