@@ -10,7 +10,7 @@
 <main class="container flex-grow-1">
     <h1 class="my-4"></h1>
       <h1 class="my-4">{% translate "Deleting the user" %}</h1>
-      <p class="my-3">{% translate "Are you sure you want to delete" %} {{ user.first_name }} {{ user.last_name }}</p>
+      <p class="my-3">{% translate "Are you sure you want to delete" %} {{ user.first_name }} {{ user.last_name }} ?</p>
       <form action="{% url 'users:delete' pk=user.pk %}" method="post" class="form">
           {% csrf_token %}
 

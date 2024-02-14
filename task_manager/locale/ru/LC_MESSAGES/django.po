@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-03 20:12+0300\n"
+"POT-Creation-Date: 2024-02-14 15:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: task_manager/templates/components/navbar_logged_in.html:5
 #: task_manager/templates/components/navbar_logged_out.html:5
-#: task_manager/templates/users/users.html:11
+#: task_manager/templates/users/users.html:15
 msgid "Users"
 msgstr "Пользователи"
 
@@ -66,40 +66,108 @@ msgstr "Я пока не совсем понимаю, что здесь писа
 msgid "Learn more..."
 msgstr "Узнать больше"
 
-#: task_manager/templates/login.html:16
+#: task_manager/templates/login.html:19
+#: task_manager/templates/login.html:6
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/login.html:21
+#: task_manager/templates/login.html:24
 msgid "Continue"
 msgstr "Войти"
 
-#: task_manager/templates/users/users.html:16
+#: task_manager/templates/users/create.html:6
+#: task_manager/templates/users/create.html:17
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/create.html:25
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: task_manager/templates/users/delete.html:6
+msgid "Delete user"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/users/delete.html:12
+msgid "Deleting the user"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/users/delete.html:13
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: task_manager/templates/users/delete.html:17
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: task_manager/templates/users/outdated_update.html:6
+#: task_manager/templates/users/update.html:6
+msgid "Update user"
+msgstr "Изменение пользователя"
+
+#: task_manager/templates/users/outdated_update.html:16
+msgid "User Changing"
+msgstr "Изменение пользователя"
+
+#: task_manager/templates/users/outdated_update.html:21
+#: task_manager/templates/users/update.html:18
+msgid "Change"
+msgstr "Изменить"
+
+#: task_manager/templates/users/update.html:10
+msgid "User changing"
+msgstr "Изменение пользователя"
+
+#: task_manager/templates/users/users.html:20
 msgid "List of users"
 msgstr "Список пользователей"
 
-#: task_manager/templates/users/users.html:20
+#: task_manager/templates/users/users.html:24
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: task_manager/templates/users/users.html:21
+#: task_manager/templates/users/users.html:25
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/templates/users/users.html:22
+#: task_manager/templates/users/users.html:26
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: task_manager/views.py:18
+#: task_manager/templates/users/users.html:39
+#: task_manager/templates/users/users.html:55
+msgid "Edit"
+msgstr "Изменить"
+
+#: task_manager/templates/users/users.html:41
+#: task_manager/templates/users/users.html:57
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/users/utils.py:9
+msgid "Access denied. Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/users/views.py:23
+msgid "User has been successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/users/views.py:34
+msgid "User has been successfully changed"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/users/views.py:41 task_manager/users/views.py:60
+msgid "You haven't got permission to edit another user"
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/users/views.py:53
+msgid "User has been successfully deleted"
+msgstr "Пользователь успешно удален"
+
+#: task_manager/views.py:16
 msgid "You've successfully logged in"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:26
+#: task_manager/views.py:23
 msgid "You've successfully logged out"
 msgstr "Вы разлогинены"
-
-#~ msgid "Hello from Hexlet"
-#~ msgstr "Привет от Хекслета"
-
-#~ msgid "Practical programming courses"
-#~ msgstr "Курсы практического программирования"
