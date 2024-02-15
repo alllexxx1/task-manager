@@ -1,0 +1,40 @@
+{
+    "valid_user": {
+      "first_name": "Roald",
+      "last_name": "Dahl",
+      "username": "rodal",
+      "password1": "a23455555",
+      "password2": "a23455555"
+  },
+  "invalid_user": {
+      "first_name": "Roald",
+      "last_name": "Dahl",
+      "username": "rodal",
+      "password1": "a23455555",
+      "password2": "0000"
+  },
+  "short_password_user": {
+      "first_name": "Roald",
+      "last_name": "Dahl",
+      "username": "rodal",
+      "password1": "12",
+      "password2": "12"
+  },
+  "registered_user": {
+      "first_name": "Roald",
+      "last_name": "Dahl",
+      "username": "rodal",
+      "password": "a23455555"
+  },
+    "updated_user": {
+      "first_name": "Jerome",
+      "last_name": "Salinger",
+      "username": "sailman",
+      "password1": "b67899999",
+      "password2": "b67899999"
+  },
+    "login_user": {
+      "username": "rodal",
+      "password": "a23455555"
+  }
+}

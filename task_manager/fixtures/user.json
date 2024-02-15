@@ -3,7 +3,7 @@
       "model": "users.user",
       "pk": 1,
       "fields": {
-          "password": 1234,
+          "password": "v12344444",
           "last_login": null,
           "is_superuser": false,
           "username": "Pterry",
@@ -21,7 +21,7 @@
       "model": "users.user",
       "pk": 2,
       "fields": {
-          "password": 4567,
+          "password": "b45677777",
           "last_login": null,
           "is_superuser": false,
           "username": "Nellie",
@@ -39,7 +39,7 @@
       "model": "users.user",
       "pk": 3,
       "fields": {
-          "password": 8901,
+          "password": "n89011111",
           "last_login": "2024-02-03 21:12:56+03",
           "is_superuser": false,
           "username": "huda",

@@ -2,62 +2,14 @@ from django.test import TestCase
 from django.urls import reverse
 from task_manager.users.models import User
 from task_manager.users.forms import UserCreateForm
-
-# class UserTestCase(TestCase):
-#     def setUp(self):
-#         self.registration_url = reverse('user:create')
-#         self.users = {
-#             'valid_user': {
-#                 'first_name': 'Roald',
-#                 'last_name': 'Dahl',
-#                 'username': 'rodal',
-#                 'password1': '2345',
-#                 'password2': '2345'
-#             },
-#             'invalid_user': {
-#                 'first_name': 'Roald',
-#                 'last_name': 'Dahl',
-#                 'username': 'rodal',
-#                 'password1': '2345',
-#                 'password2': '0000'
-#             },
-#             'short_password_user': {
-#                 'first_name': 'Roald',
-#                 'last_name': 'Dahl',
-#                 'username': 'rodal',
-#                 'password1': '22',
-#                 'password2': '22'
-#             }
-#         }
-#         return super().setUp()
+from task_manager.users.utils import load_fixture
 
 
 class UserRegistrationTestCase(TestCase):
+
     def setUp(self):
+        self.users = load_fixture('test_users.json')
         self.registration_url = reverse('users:create')
-        self.users = {
-            'valid_user': {
-                'first_name': 'Roald',
-                'last_name': 'Dahl',
-                'username': 'rodal',
-                'password1': 'a23455555',
-                'password2': 'a23455555'
-            },
-            'invalid_user': {
-                'first_name': 'Roald',
-                'last_name': 'Dahl',
-                'username': 'rodal',
-                'password1': 'a23455555',
-                'password2': '0000'
-            },
-            'short_password_user': {
-                'first_name': 'Roald',
-                'last_name': 'Dahl',
-                'username': 'rodal',
-                'password1': 'axaxc1',
-                'password2': 'axaxc1'
-            }
-        }
 
     def test_register_valid_user(self):
         user_count_before = User.objects.count()
@@ -85,7 +37,7 @@ class UserRegistrationTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertFormError(response.context['form'], 'password2',
                              'This password is too short. '
-                             'It must contain at least 8 characters.')
+                             'It must contain at least 3 characters.')
 
     def test_register_form(self):
         user = self.users['valid_user']
@@ -95,24 +47,10 @@ class UserRegistrationTestCase(TestCase):
 
 class UserUpdateTestCase(TestCase):
     def setUp(self):
-        self.users = {
-            'user': {
-                'first_name': 'Roald',
-                'last_name': 'Dahl',
-                'username': 'rodal',
-                'password': 'a23455555'
-            },
-            'updated_user': {
-                'first_name': 'Jerome',
-                'last_name': 'Salinger',
-                'username': 'sailman',
-                'password1': 'b67899999',
-                'password2': 'b67899999'
-            }
-        }
+        self.users = load_fixture('test_users.json')
 
     def test_update_user(self):
-        user = User.objects.create_user(**self.users['user'])
+        user = User.objects.create_user(**self.users['registered_user'])
         update_url = reverse('users:update', args=[user.pk])
         self.client.login(username='rodal', password='a23455555')
         response = self.client.post(update_url, self.users['updated_user'])
@@ -126,17 +64,10 @@ class UserUpdateTestCase(TestCase):
 
 class UserDeleteTestCase(TestCase):
     def setUp(self):
-        self.users = {
-            'user': {
-                'first_name': 'Roald',
-                'last_name': 'Dahl',
-                'username': 'rodal',
-                'password': 'a23455555'
-            }
-        }
+        self.users = load_fixture('test_users.json')
 
     def test_delete_user(self):
-        user = User.objects.create_user(**self.users['user'])
+        user = User.objects.create_user(**self.users['registered_user'])
         deletion_url = reverse('users:delete', args=[user.pk])
         self.client.login(username='rodal', password='a23455555')
         response = self.client.post(deletion_url)
@@ -167,15 +98,12 @@ class UsersViewTestCase(TestCase):
 class UserLoginTestCase(TestCase):
 
     def setUp(self):
-        self.user = {
-            'username': 'rodal',
-            'password': 'a23455555'
-        }
+        self.users = load_fixture('test_users.json')
+        self.login_url = reverse('login')
 
     def test_user_login_success(self):
-        login_url = reverse('login')
-        User.objects.create_user(**self.user)
-        response = self.client.post(login_url,
+        User.objects.create_user(**self.users['login_user'])
+        response = self.client.post(self.login_url,
                                     {'username': 'rodal', 'password': 'a23455555'},
                                     follow=True)
 
@@ -186,9 +114,8 @@ class UserLoginTestCase(TestCase):
         self.assertTrue(user.is_authenticated)
 
     def test_user_login_failure(self):
-        login_url = reverse('login')
-        User.objects.create_user(**self.user)
-        response = self.client.post(login_url,
+        User.objects.create_user(**self.users['login_user'])
+        response = self.client.post(self.login_url,
                                     {'username': 'Ronald', 'password': 'wrong_password'},
                                     follow=True)
 
