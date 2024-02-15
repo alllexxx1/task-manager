@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from task_manager.users.models import User
 from task_manager.users.forms import UserCreateForm
-from task_manager.users.utils import load_fixture
+from task_manager.custom_utils import load_fixture
 
 
 class UserRegistrationTestCase(TestCase):

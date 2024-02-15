@@ -7,7 +7,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext as _
 from task_manager.users.models import User
 from task_manager.users.forms import UserCreateForm
-from task_manager.users.utils import AuthRequiredMixin
+from task_manager.custom_utils import AuthRequiredMixin
 
 
 class UsersView(ListView):

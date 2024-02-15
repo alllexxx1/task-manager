@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<main class="container flex-grow-1">
+    <h1 class="my-4"></h1>
+      <h1 class="my-4">{% block heading %}{% endblock %}</h1>
+      <p class="my-3">{% block text %}{% endblock %} ?</p>
+
+      {% block form %}
+      {% endblock %}
+
+</main>
+{% endblock %}
