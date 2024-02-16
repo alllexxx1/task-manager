@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+{% translate "Tasks" %}
+{% endblock %}
+
+{% block content %}
+<main class="container flex-grow-1">
+    <div class="mt-4">
+        {% bootstrap_messages %}
+    </div>
+    <h1 class="my-4"></h1>
+    <h2 class="my-3">{% translate "Tasks" %}</h2>
+    <a href="{% url 'tasks:create' %}" class="btn btn-warning btn-link">{% translate "Create task" %}</a>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <caption>{% translate "List of tasks" %}</caption>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>{% translate "Name" %}</th>
+                            <th>{% translate "Status" %}</th>
+                            <th>{% translate "Author" %}</th>
+                            <th>{% translate "Assignee" %}</th>
+                            <th>{% translate "Date of creation" %}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.name }}</td>
+                            <td>{{ task.status }}</td>
+                            <td>{{ task.author }}</td>
+                            <td>{{ task.assignee }}</td>
+                            <td>{{ task.created_at }}</td>
+                            <td>
+                                <a href="#" class="text-decoration-none">{% translate "Edit" %}</a>
+                                <br>
+                                <a href="#" class="text-decoration-none">{% translate "Delete" %}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -77,7 +77,7 @@ class UserDeleteTestCase(TestCase):
         self.assertFalse(User.objects.last())
 
 
-class UsersViewTestCase(TestCase):
+class UsersReadTestCase(TestCase):
     fixtures = ['user.json', 'auth.json']
 
     def test_get_users(self):

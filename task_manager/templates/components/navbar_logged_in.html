@@ -12,7 +12,7 @@
     <a href="/" class="nav-link px-2">{% bs_icon 'tags' %}{% translate "Labels" %}</a></li>
   </li>
   <li class="nav-item">
-    <a href="/" class="nav-link px-2">{% bs_icon 'list-task' %}{% translate "Tasks" %}</a></li>
+    <a href="{% url 'tasks:tasks' %}" class="nav-link px-2">{% bs_icon 'list-task' %}{% translate "Tasks" %}</a></li>
   </li>
 </ul>
 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
