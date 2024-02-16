@@ -1,27 +1,29 @@
 from django.test import TestCase
 from django.urls import reverse
+from task_manager.custom_utils import load_fixture
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusCreateForm
 from task_manager.users.models import User
 
 
 class StatusCRUDTestCase(TestCase):
-    fixtures = ['user.json', 'auth.json', 'statuses.json']
+    fixtures = ['users.json', 'auth.json', 'statuses.json']
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
         self.client.force_login(self.user)
+        self.statuses = load_fixture('statuses_to_create.json')
 
     def test_create_status(self):
         post_url = reverse('statuses:create')
-        response = self.client.post(post_url, {'name': 'To do'})
+        response = self.client.post(post_url, self.statuses['to_do_status'])
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('statuses:statuses'))
         self.assertEqual(Status.objects.count(), 4)
 
     def test_create_status_form(self):
-        form = StatusCreateForm({'name': 'To do'})
+        form = StatusCreateForm(self.statuses['to_do_status'])
         self.assertTrue(form.is_valid())
 
     def test_read_statuses(self):
@@ -38,12 +40,12 @@ class StatusCRUDTestCase(TestCase):
     def test_update_status(self):
         status = Status.objects.get(name='In progress')
         update_url = reverse('statuses:update', args=[status.pk])
-        response = self.client.post(update_url, {'name': 'ASAP'})
+        response = self.client.post(update_url, self.statuses['in_action_status'])
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('statuses:statuses'))
         status.refresh_from_db()
-        self.assertEqual(status.name, 'ASAP')
+        self.assertEqual(status.name, 'In action')
 
     def test_delete_status(self):
         status = Status.objects.get(name='In progress')

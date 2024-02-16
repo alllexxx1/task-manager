@@ -8,7 +8,7 @@ from task_manager.custom_utils import load_fixture
 class UserRegistrationTestCase(TestCase):
 
     def setUp(self):
-        self.users = load_fixture('test_users.json')
+        self.users = load_fixture('users_to_create.json')
         self.registration_url = reverse('users:create')
 
     def test_register_valid_user(self):
@@ -47,7 +47,7 @@ class UserRegistrationTestCase(TestCase):
 
 class UserUpdateTestCase(TestCase):
     def setUp(self):
-        self.users = load_fixture('test_users.json')
+        self.users = load_fixture('users_to_create.json')
 
     def test_update_user(self):
         user = User.objects.create_user(**self.users['registered_user'])
@@ -64,7 +64,7 @@ class UserUpdateTestCase(TestCase):
 
 class UserDeleteTestCase(TestCase):
     def setUp(self):
-        self.users = load_fixture('test_users.json')
+        self.users = load_fixture('users_to_create.json')
 
     def test_delete_user(self):
         user = User.objects.create_user(**self.users['registered_user'])
@@ -78,9 +78,9 @@ class UserDeleteTestCase(TestCase):
 
 
 class UsersReadTestCase(TestCase):
-    fixtures = ['user.json', 'auth.json']
+    fixtures = ['users.json', 'auth.json']
 
-    def test_get_users(self):
+    def test_read_users(self):
         response = self.client.get(reverse('users:users'))
         users = response.context['users']
         user1 = User.objects.get(username='Pterry')
@@ -98,7 +98,7 @@ class UsersReadTestCase(TestCase):
 class UserLoginTestCase(TestCase):
 
     def setUp(self):
-        self.users = load_fixture('test_users.json')
+        self.users = load_fixture('users_to_create.json')
         self.login_url = reverse('login')
 
     def test_user_login_success(self):

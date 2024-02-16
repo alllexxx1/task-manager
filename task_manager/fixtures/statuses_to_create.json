@@ -1,0 +1,8 @@
+{
+  "to_do_status": {
+      "name": "To do"
+  },
+  "in_action_status": {
+      "name": "In action"
+  }
+}
