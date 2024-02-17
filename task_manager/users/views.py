@@ -14,7 +14,7 @@ class UsersView(ListView):
     model = User
     template_name = 'users/users.html'
     context_object_name = 'users'
-    ordering = ['id']
+    ordering = ['pk']
 
 
 class CreateUserView(SuccessMessageMixin, CreateView):

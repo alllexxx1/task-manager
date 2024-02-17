@@ -11,6 +11,7 @@ class StatusesView(AuthRequiredMixin, ListView):
     model = Status
     template_name = 'statuses/statuses.html'
     context_object_name = 'statuses'
+    ordering = ['pk']
 
 
 class CreateStatusView(SuccessMessageMixin, AuthRequiredMixin, CreateView):

@@ -15,9 +15,10 @@ class TasksView(AuthRequiredMixin, ListView):
     model = Task
     template_name = 'tasks/tasks.html'
     context_object_name = 'tasks'
+    ordering = ['pk']
 
 
-class DetailTaskView(DetailView):
+class DetailTaskView(AuthRequiredMixin, DetailView):
     model = Task
     template_name = 'tasks/task.html'
     context_object_name = 'task'
