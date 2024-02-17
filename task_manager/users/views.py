@@ -1,13 +1,12 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.contrib import messages
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext as _
 from task_manager.users.models import User
 from task_manager.users.forms import UserCreateForm
-from task_manager.custom_utils import AuthRequiredMixin
+from task_manager.custom_utils import (AuthRequiredMixin,
+                                       UserPermissionMixin,
+                                       DeletionProtectHandleMixin)
 
 
 class UsersView(ListView):
@@ -25,7 +24,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 
 
 class UpdateUserView(AuthRequiredMixin,
-                     UserPassesTestMixin,
+                     UserPermissionMixin,
                      SuccessMessageMixin,
                      UpdateView):
     model = User
@@ -34,30 +33,14 @@ class UpdateUserView(AuthRequiredMixin,
     success_url = reverse_lazy('users:users')
     success_message = _('User has been successfully changed')
 
-    def test_func(self):
-        user_pk = self.kwargs.get('pk')
-        return self.request.user.pk == user_pk
-
-    def handle_no_permission(self):
-        msg_text = _("You haven't got permission to edit another user")
-        messages.warning(self.request, msg_text)
-        return redirect(reverse_lazy('users:users'))
-
 
 class DeleteUserView(AuthRequiredMixin,
-                     UserPassesTestMixin,
+                     UserPermissionMixin,
+                     DeletionProtectHandleMixin,
                      SuccessMessageMixin,
                      DeleteView):
     model = User
     template_name = 'users/delete.html'
-    success_url = reverse_lazy('users:users')
+    success_url = redirect_url = reverse_lazy('users:users')
     success_message = _('User has been successfully deleted')
-
-    def test_func(self):
-        user_pk = self.kwargs.get('pk')
-        return self.request.user.pk == user_pk
-
-    def handle_no_permission(self):
-        msg_text = _("You haven't got permission to edit another user")
-        messages.warning(self.request, msg_text)
-        return redirect(reverse_lazy('users:users'))
+    protection_msg = _("User can't be deleted. It is linked to one or more tasks")

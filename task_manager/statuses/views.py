@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusCreateForm
-from task_manager.custom_utils import AuthRequiredMixin
+from task_manager.custom_utils import AuthRequiredMixin, DeletionProtectHandleMixin
 
 
 class StatusesView(AuthRequiredMixin, ListView):
@@ -30,8 +30,12 @@ class UpdateStatusView(SuccessMessageMixin, AuthRequiredMixin, UpdateView):
     success_message = _('Status has been successfully updated')
 
 
-class DeleteStatusView(SuccessMessageMixin, AuthRequiredMixin, DeleteView):
+class DeleteStatusView(SuccessMessageMixin,
+                       AuthRequiredMixin,
+                       DeletionProtectHandleMixin,
+                       DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
-    success_url = reverse_lazy('statuses:statuses')
+    success_url = redirect_url = reverse_lazy('statuses:statuses')
     success_message = _('Status has been successfully deleted')
+    protection_msg = _("Status can't be deleted. It is linked to one or more tasks")
