@@ -8,7 +8,8 @@ from django.views.generic import (
 )
 from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskCreateForm
-from task_manager.custom_utils import AuthRequiredMixin
+from task_manager.custom_utils import (AuthRequiredMixin,
+                                       AuthorPermissionMixin)
 from task_manager.users.models import User
 
 
@@ -46,7 +47,10 @@ class UpdateTaskView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = _('Task has been successfully updated')
 
 
-class DeleteTaskView(AuthRequiredMixin, SuccessMessageMixin, DeleteView):
+class DeleteTaskView(AuthRequiredMixin,
+                     AuthorPermissionMixin,
+                     SuccessMessageMixin,
+                     DeleteView):
     model = Task
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('tasks:tasks')

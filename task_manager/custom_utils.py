@@ -44,6 +44,19 @@ class DeletionProtectHandleMixin:
             return redirect(self.redirect_url)
 
 
+class AuthorPermissionMixin(UserPassesTestMixin):
+    no_author_permission_msg = _('Task can be deleted only by its author')
+    tasks_url = reverse_lazy('tasks:tasks')
+
+    def test_func(self):
+        task = self.get_object()
+        return self.request.user.username == task.author.username
+
+    def handle_no_permission(self):
+        messages.warning(self.request, self.no_author_permission_msg)
+        return redirect(self.tasks_url)
+
+
 def load_fixture(path):
     with open(os.path.abspath(f'task_manager/fixtures/{path}'), 'r') as file:
         return json.loads(file.read())
