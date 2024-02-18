@@ -8,7 +8,7 @@
   "invalid_task": {
       "name": "New task #2",
       "description": "",
-      "assignee": 3,
-      "status": 3
+      "assignee": "",
+      "status": ""
   }
 }

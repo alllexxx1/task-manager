@@ -40,7 +40,7 @@ class DeletionProtectHandleMixin:
         try:
             return super().post(request, *args, **kwargs)
         except ProtectedError:
-            messages.warning(self.request, self.protection_msg)
+            messages.warning(request, self.protection_msg)
             return redirect(self.redirect_url)
 
 

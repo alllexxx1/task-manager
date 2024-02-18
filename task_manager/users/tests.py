@@ -26,6 +26,7 @@ class UserRegistrationTestCase(TestCase):
     def test_register_invalid_user(self):
         response = self.client.post(self.registration_url,
                                     self.users['invalid_user'])
+
         self.assertEqual(response.status_code, 200)
         self.assertFormError(response.context['form'], 'password2',
                              "The two password fields didn’t match.")

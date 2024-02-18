@@ -3,7 +3,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import (
     ListView, CreateView,
-    DetailView
+    DetailView, UpdateView,
+    DeleteView
 )
 from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskCreateForm
@@ -35,3 +36,18 @@ class CreateTaskView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
         user = self.request.user
         form.instance.author = User.objects.get(pk=user.pk)
         return super().form_valid(form)
+
+
+class UpdateTaskView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Task
+    form_class = TaskCreateForm
+    template_name = 'tasks/update.html'
+    success_url = reverse_lazy('tasks:tasks')
+    success_message = _('Task has been successfully updated')
+
+
+class DeleteTaskView(AuthRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Task
+    template_name = 'tasks/delete.html'
+    success_url = reverse_lazy('tasks:tasks')
+    success_message = _('Task has been successfully deleted')

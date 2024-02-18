@@ -36,13 +36,13 @@
                             <td>{{ task.id }}</td>
                             <td><a href="{% url 'tasks:task' pk=task.pk %}">{{ task.name }}</a></td>
                             <td>{{ task.status }}</td>
-                            <td>{{ task.author }}</td>
-                            <td>{{ task.assignee }}</td>
-                            <td>{{ task.created_at }}</td>
+                            <td>{{ task.author.get_full_name }}</td>
+                            <td>{{ task.assignee.get_full_name|default:"" }}</td>
+                            <td>{{ task.created_at|date:'d.m.Y H:i' }}</td>
                             <td>
-                                <a href="#" class="text-decoration-none">{% translate "Edit" %}</a>
+                                <a href="{% url 'tasks:update' pk=task.pk %}" class="text-decoration-none">{% translate "Edit" %}</a>
                                 <br>
-                                <a href="#" class="text-decoration-none">{% translate "Delete" %}</a>
+                                <a href="{% url 'tasks:delete' pk=task.pk %}" class="text-decoration-none">{% translate "Delete" %}</a>
                             </td>
                         </tr>
                     {% endfor %}

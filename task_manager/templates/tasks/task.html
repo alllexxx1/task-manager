@@ -21,11 +21,11 @@
                 <div class="container">
                   <div class="row p-1">
                     <div class="col">{% translate "Author" %}</div>
-                    <div class="col">{{ task.author }}</div>
+                    <div class="col">{{ task.author.get_full_name }}</div>
                   </div>
                   <div class="row p-1">
                     <div class="col">{% translate "Assignee" %}</div>
-                    <div class="col">{{ task.assignee }}</div>
+                    <div class="col">{{ task.assignee.get_full_name|default:"" }}</div>
                   </div>
                   <div class="row p-1">
                     <div class="col">{% translate "Status" %}</div>
@@ -33,7 +33,7 @@
                   </div>
                   <div class="row p-1">
                     <div class="col">{% translate "Date of creation" %}</div>
-                    <div class="col">{{ task.created_at }}</div>
+                    <div class="col">{{ task.created_at|date:'d.m.Y H:i' }}</div>
                   </div>
                   <div class="row p-1">
                     <div class="col">
@@ -45,9 +45,9 @@
                   </div>
                   <div class="row p-1">
                     <div class="col">
-                      <a href="#">{% translate "Delete" %}</a>
+                      <a href="{% url 'tasks:update' pk=task.pk %}">{% translate "Update" %}</a>
                       <br>
-                      <a href=#">{% translate "Update" %}</a>
+                      <a href="{% url 'tasks:delete' pk=task.pk %}">{% translate "Delete" %}</a>
                     </div>
                   </div>
                 </div>

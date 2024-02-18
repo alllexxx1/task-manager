@@ -11,4 +11,4 @@ class TaskCreateForm(forms.ModelForm):
         fields = ['name', 'description', 'status', 'assignee']
 
     status = forms.ModelChoiceField(queryset=Status.objects.all())
-    assignee = forms.ModelChoiceField(queryset=User.objects.all())
+    assignee = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
