@@ -2,22 +2,26 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import (
-    ListView, CreateView,
-    DetailView, UpdateView,
-    DeleteView
+    CreateView, DetailView,
+    UpdateView, DeleteView
 )
 from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskCreateForm
-from task_manager.custom_utils import (AuthRequiredMixin,
-                                       AuthorPermissionMixin)
+from task_manager.custom_utils import (
+    AuthRequiredMixin,
+    AuthorPermissionMixin
+)
+from django_filters.views import FilterView
+from task_manager.tasks.filters import TasksFilter
 from task_manager.users.models import User
 
 
-class TasksView(AuthRequiredMixin, ListView):
+class TasksView(AuthRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/tasks.html'
     context_object_name = 'tasks'
     ordering = ['pk']
+    filterset_class = TasksFilter
 
 
 class DetailTaskView(AuthRequiredMixin, DetailView):
