@@ -1,0 +1,8 @@
+{
+  "debug_label": {
+      "name": "debug"
+  },
+  "undefined_label": {
+      "name": "undefined"
+  }
+}

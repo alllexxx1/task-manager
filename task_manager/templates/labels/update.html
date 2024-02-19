@@ -1,0 +1,21 @@
+{% extends "statuses/create.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+{% translate "Update status" %}
+{% endblock %}
+
+{% block heading %}
+{% translate "Update status" %}
+{% endblock %}
+
+{% block form %}
+<form action="{% url 'statuses:update' pk=status.pk %}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% translate "Change" as button_name %}
+    {% bootstrap_button button_type="submit" button_class="btn-warning mb-4" content=button_name %}
+</form>
+{% endblock %}
