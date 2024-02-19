@@ -70,3 +70,31 @@ class TaskCRUDTestCase(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('tasks:tasks'))
         self.assertEqual(Task.objects.all().count(), 1)
+
+
+class FilterFormTestCase(TestCase):
+    fixtures = ['users.json', 'auth.json', 'statuses.json', 'tasks.json']
+
+    def setUp(self):
+        self.user = User.objects.get(pk=1)
+        self.client.force_login(self.user)
+
+    def test_filter_form(self):
+        get_url = reverse('tasks:tasks')
+        query_params = {'assignee': 2}
+        response = self.client.get(get_url, query_params)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'tasks/tasks.html')
+        self.assertContains(response, 'Harper Lee')
+        self.assertNotContains(response, 'Philip Pullman')
+
+    def test_filter_form_check_box(self):
+        get_url = reverse('tasks:tasks')
+        query_params = {'personal_tasks': 'on'}
+        response = self.client.get(get_url, query_params)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'tasks/tasks.html')
+        self.assertContains(response, 'Reorganize')
+        self.assertContains(response, 'Enhance')

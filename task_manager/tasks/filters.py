@@ -12,7 +12,7 @@ class TasksFilter(FilterSet):
         lookup_expr='icontains'
     )
 
-    assigned_task = BooleanFilter(
+    assigned_tasks = BooleanFilter(
         label=_('Only tasks assigned to me'),
         widget=forms.CheckboxInput,
         method='get_assigned_tasks'
