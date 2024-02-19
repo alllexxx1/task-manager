@@ -13,7 +13,7 @@
 #         self.user = User.objects.get(pk=3)
 #         self.client.force_login(self.user)
 #         self.labels = load_fixture('labels_to_create.json')
-#
+# #
 #     def test_create_label(self):
 #         post_url = reverse('labels:create')
 #         response = self.client.post(post_url, self.labels['debug_label'])
