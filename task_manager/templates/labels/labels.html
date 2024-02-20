@@ -3,7 +3,7 @@
 {% load django_bootstrap5 %}
 
 {% block title %}
-{% translate "Statuses" %}
+{% translate "Labels" %}
 {% endblock %}
 
 {% block content %}
@@ -12,13 +12,13 @@
         {% bootstrap_messages %}
     </div>
     <h1 class="my-4"></h1>
-    <h2 class="my-3">{% translate "Statuses" %}</h2>
-    <a href="{% url 'statuses:create' %}" class="btn btn-warning btn-link">{% translate "Create status" %}</a>
+    <h2 class="my-3">{% translate "Labels" %}</h2>
+    <a href="{% url 'labels:create' %}" class="btn btn-warning btn-link">{% translate "Create label" %}</a>
     <div class="row">
         <div class="col">
             <div class="table-responsive">
                 <table class="table table-striped">
-                    <caption>{% translate "List of statuses" %}</caption>
+                    <caption>{% translate "List of labels" %}</caption>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -28,15 +28,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for status in statuses %}
+                    {% for label in labels %}
                         <tr>
-                            <td>{{ status.id }}</td>
-                            <td>{{ status.name }}</td>
-                            <td>{{ status.created_at|date:'d.m.Y H:i' }}</td>
+                            <td>{{ label.id }}</td>
+                            <td>{{ label.name }}</td>
+                            <td>{{ label.created_at|date:'d.m.Y H:i' }}</td>
                             <td>
-                                <a href="{% url 'statuses:update' pk=status.pk %}" class="text-decoration-none">{% translate "Edit" %}</a>
+                                <a href="#" class="text-decoration-none">{% translate "Edit" %}</a>
                                 <br>
-                                <a href="{% url 'statuses:delete' pk=status.pk %}" class="text-decoration-none">{% translate "Delete" %}</a>
+                                <a href="#" class="text-decoration-none">{% translate "Delete" %}</a>
                             </td>
                         </tr>
                     {% endfor %}

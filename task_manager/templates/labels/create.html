@@ -3,18 +3,18 @@
 {% load django_bootstrap5 %}
 
 {% block title %}
-{% translate "Create status" %}
+{% translate "Create label" %}
 {% endblock %}
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
     <h1 class="my-4">
         {% block heading %}
-        {% translate "Create status" %}
+        {% translate "Create label" %}
         {% endblock %}
     </h1>
     {% block form %}
-    <form action="{% url 'statuses:create' %}" method="post" class="form">
+    <form action="{% url 'labels:create' %}" method="post" class="form">
         {% csrf_token %}
         {% bootstrap_form form %}
 

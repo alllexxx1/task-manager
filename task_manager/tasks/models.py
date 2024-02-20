@@ -10,5 +10,5 @@ class Task(models.Model):
     assignee = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
     status = models.ForeignKey(Status, on_delete=models.PROTECT)
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='tasks')
-    labels = models.ManyToManyField(Label, blank=True)
+    label = models.ManyToManyField(Label, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

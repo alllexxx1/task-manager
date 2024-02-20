@@ -1,5 +1,8 @@
 from django import forms
-from django_filters import FilterSet, BooleanFilter, CharFilter
+from django_filters import (
+    FilterSet, BooleanFilter,
+    CharFilter, ModelChoiceFilter,
+    ModelMultipleChoiceFilter)
 from task_manager.tasks.models import Task
 from django.utils.translation import gettext as _
 
@@ -38,4 +41,4 @@ class TasksFilter(FilterSet):
 
     class Meta:
         model = Task
-        fields = ['name', 'status', 'assignee']
+        fields = ['name', 'status', 'assignee', 'label']
