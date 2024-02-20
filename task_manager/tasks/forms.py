@@ -9,8 +9,8 @@ class TaskCreateForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        fields = ['name', 'description', 'status', 'assignee', 'label']
+        fields = ['name', 'description', 'status', 'assignee', 'labels']
 
     status = forms.ModelChoiceField(queryset=Status.objects.all())
     assignee = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
-    label = forms.ModelMultipleChoiceField(queryset=Label.objects.all(), required=False)
+    labels = forms.ModelMultipleChoiceField(queryset=Label.objects.all(), required=False)

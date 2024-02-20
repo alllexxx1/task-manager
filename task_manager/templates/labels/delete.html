@@ -3,19 +3,19 @@
 {% load django_bootstrap5 %}
 
 {% block title %}
-{% translate "Delete status" %}
+{% translate "Delete label" %}
 {% endblock %}
 
 {% block heading %}
-{% translate "Deleting the status" %}
+{% translate "Deleting the label" %}
 {% endblock %}
 
 {% block text %}
-{% translate "Are you sure you want to delete" %} {{ status.name }}
+{% translate "Are you sure you want to delete" %} {{ label.name }}
 {% endblock %}
 
 {% block form %}
-<form action="{% url 'statuses:delete' pk=status.pk %}" method="post" class="form">
+<form action="{% url 'labels:delete' pk=label.pk %}" method="post" class="form">
   {% csrf_token %}
 
   {% translate "Yes, delete" as button_name %}

@@ -3,15 +3,15 @@
 {% load django_bootstrap5 %}
 
 {% block title %}
-{% translate "Update status" %}
+{% translate "Update label" %}
 {% endblock %}
 
 {% block heading %}
-{% translate "Update status" %}
+{% translate "Update label" %}
 {% endblock %}
 
 {% block form %}
-<form action="{% url 'statuses:update' pk=status.pk %}" method="post" class="form">
+<form action="{% url 'labels:update' pk=label.pk %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
 

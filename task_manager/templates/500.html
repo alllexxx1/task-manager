@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block title %}
+{% Server error %}
+{% endblock %}
+
+{% block content %}
+<main class="flex-grow-1">
+    <div class="container-lg mt-3">
+      <h1>{% translate "The internal server error has occurred" %}</h1>
+
+      <p>{% translate "Your request could not be performed" %}</p>
+
+    </div>
+</main>
+{% endblock %}

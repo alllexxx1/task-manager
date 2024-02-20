@@ -35,22 +35,22 @@ class LabelCRUDTestCase(TestCase):
         self.assertTemplateUsed(response, 'labels/labels.html')
         self.assertContains(response, label.name)
         self.assertIn(label, response.context['labels'])
-#
-#     def test_update_label(self):
-#         label = Label.objects.get(name='Help needed')
-#         update_url = reverse('labels:update', args=[label.pk])
-#         response = self.client.post(update_url, self.labels['undefined_label'])
-#
-#         self.assertEqual(response.status_code, 302)
-#         self.assertRedirects(response, reverse('labels:labels'))
-#         label.refresh_from_db()
-#         self.assertEqual(label.name, 'undefined')
-#
-#     def test_delete_label(self):
-#         label = Label.objects.get(name='Bug')
-#         delete_url = reverse('labels:delete', args=[label.pk])
-#         response = self.client.post(delete_url)
-#
-#         self.assertEqual(response.status_code, 302)
-#         self.assertRedirects(response, reverse('labels:labels'))
-#         self.assertEqual(Label.objects.all().count, 2)
+
+    def test_update_label(self):
+        label = Label.objects.get(name='Help needed')
+        update_url = reverse('labels:update', args=[label.pk])
+        response = self.client.post(update_url, self.labels['undefined_label'])
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('labels:labels'))
+        label.refresh_from_db()
+        self.assertEqual(label.name, 'undefined')
+
+    def test_delete_label(self):
+        label = Label.objects.get(name='Bug')
+        delete_url = reverse('labels:delete', args=[label.pk])
+        response = self.client.post(delete_url)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('labels:labels'))
+        self.assertEqual(Label.objects.all().count(), 2)

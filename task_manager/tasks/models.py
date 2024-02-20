@@ -10,5 +10,13 @@ class Task(models.Model):
     assignee = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
     status = models.ForeignKey(Status, on_delete=models.PROTECT)
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='tasks')
-    label = models.ManyToManyField(Label, blank=True)
+    labels = models.ManyToManyField(Label, through='TaskLabel', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+class TaskLabel(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    labels = models.ForeignKey(Label, on_delete=models.PROTECT)

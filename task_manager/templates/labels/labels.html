@@ -34,9 +34,9 @@
                             <td>{{ label.name }}</td>
                             <td>{{ label.created_at|date:'d.m.Y H:i' }}</td>
                             <td>
-                                <a href="#" class="text-decoration-none">{% translate "Edit" %}</a>
+                                <a href="{% url 'labels:update' pk=label.pk %}" class="text-decoration-none">{% translate "Edit" %}</a>
                                 <br>
-                                <a href="#" class="text-decoration-none">{% translate "Delete" %}</a>
+                                <a href="{% url 'labels:delete' pk=label.pk %}" class="text-decoration-none">{% translate "Delete" %}</a>
                             </td>
                         </tr>
                     {% endfor %}

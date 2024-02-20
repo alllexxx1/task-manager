@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block title %}
+{% Not found %}
+{% endblock %}
+
+{% block content %}
+<main class="flex-grow-1">
+    <div class="container-lg mt-3">
+      <h1>{% translate "The page hasn't been found" %}</h1>
+
+      <p>{% translate "What you are seeking is not here" %}</p>
+      <p><a href="{% url 'index' %}">{% translate "Come back to the main page" %}</a></p>
+
+    </div>
+</main>
+{% endblock %}

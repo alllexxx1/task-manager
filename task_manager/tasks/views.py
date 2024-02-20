@@ -48,7 +48,7 @@ class UpdateTaskView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = TaskCreateForm
     template_name = 'tasks/update.html'
     success_url = reverse_lazy('tasks:tasks')
-    success_message = _('Task has been successfully updated')
+    success_message = _('Task has been successfully changed')
 
 
 class DeleteTaskView(AuthRequiredMixin,
