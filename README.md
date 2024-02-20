@@ -11,6 +11,30 @@
 
 ---
 
+#### Run the project both locally and on a production server
+```
+$ git clone git@github.com:alllexxx1/python-project-52.git
+$ cd python-project-52
+$ make install
+
+# at this point create a '.env' file and set up
+# configuration variables (example below)
+
+$ make dev # start the app locally
+$ make start # command to launch the app on a production server
+
+# for more useful shorcut commands check out the Makefile
+```
+#### .env file example
+```
+SECRET_KEY=any_reliable_set_of_characters
+DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/yourdatabase
+DEBUG=True
+ROLLBAR_ACCESS_TOKEN=token_provided_by_roolbar.com
+```
+
+---
+
 ### Links
 
 This project was built using these tools:
