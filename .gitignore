@@ -6,3 +6,4 @@ __pycache__/
 htmlcov
 .coverage
 coverage.xml
+db.sqlite3
