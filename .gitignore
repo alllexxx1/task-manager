@@ -7,3 +7,4 @@ htmlcov
 .coverage
 coverage.xml
 db.sqlite3
+staticfiles
