@@ -1,20 +1,45 @@
 from django import forms
 from django_filters import (
     FilterSet, BooleanFilter,
-    CharFilter
-    # ModelChoiceFilter,
-    # ModelMultipleChoiceFilter
+    CharFilter,
+    ModelChoiceFilter,
+    ModelMultipleChoiceFilter
 )
-from task_manager.tasks.models import Task
 from django.utils.translation import gettext as _
+from task_manager.tasks.models import Task
+from task_manager.users.models import User
+from task_manager.statuses.models import Status
+from task_manager.labels.models import Label
 
 
 class TasksFilter(FilterSet):
+
+    class Meta:
+        model = Task
+        fields = ['name', 'status', 'assignee', 'labels']
 
     name = CharFilter(
         label=_('Task name'),
         field_name='name',
         lookup_expr='icontains'
+    )
+
+    status = ModelChoiceFilter(
+        label=_('Status'),
+        field_name='status',
+        queryset=Status.objects.all()
+    )
+
+    assignee = ModelChoiceFilter(
+        label=_('Assignee'),
+        field_name='assignee',
+        queryset=User.objects.all()
+    )
+
+    labels = ModelMultipleChoiceFilter(
+        label=_('Labels'),
+        field_name='labels',
+        queryset=Label.objects.all()
     )
 
     assigned_tasks = BooleanFilter(
@@ -40,7 +65,3 @@ class TasksFilter(FilterSet):
             user = self.request.user
             return queryset.filter(assignee=user)
         return queryset
-
-    class Meta:
-        model = Task
-        fields = ['name', 'status', 'assignee', 'labels']

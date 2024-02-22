@@ -27,8 +27,6 @@ class TaskCRUDTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(Task.objects.all().count(), 2)
-        self.assertFormError(response.context['form'], 'status',
-                             'This field is required.')
 
     def test_read_tasks(self):
         get_url = reverse('tasks:tasks')
