@@ -25,11 +25,10 @@ django-bootstrap5 = "^23.4"
 django-bootstrap-icons = "^0.8.7"
 django-filter = "^23.5"
 rollbar = "^0.16.3"
-
+django-extensions = "^3.2.3"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
-django-extensions = "^3.2.3"
 ipython = "^8.22.0"
 coverage = "^7.4.2"
 
