@@ -32,7 +32,7 @@
                     {% for user in users %}
                         <tr {% if user.is_authenticated and user.username == request.user.username %}class="text-warning" title="Current user" {% endif %}>
                             <td>{{ user.id }}</td>
-                            <td> {{ user.first_name }}</td>
+                            <td>{{ user.username }}</td>
                             <td>{{ user.get_full_name }}</td>
                             <td>{{ user.date_joined|date:'d.m.Y H:i' }}</td>
                             <td>
@@ -48,7 +48,7 @@
                     {% for user in users %}
                         <tr>
                             <td>{{ user.id }}</td>
-                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.username }}</td>
                             <td>{{ user.get_full_name }}</td>
                             <td>{{ user.date_joined|date:'d.m.Y H:i' }}</td>
                             <td>
