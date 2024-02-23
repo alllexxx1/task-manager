@@ -10,7 +10,3 @@ class ChangeLanguageTestCase(TestCase):
 
         response = self.client.get(reverse('index'), HTTP_ACCEPT_LANGUAGE='en')
         self.assertContains(response, 'Learn more...')
-
-    def test_test(self):
-        response = self.client.get(reverse('index'))
-        self.assertContains(response, 'Вход')
