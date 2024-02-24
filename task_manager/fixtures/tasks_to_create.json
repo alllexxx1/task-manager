@@ -2,13 +2,13 @@
   "valid_task": {
       "name": "New task #1",
       "description": "Some description",
-      "assignee": 1,
+      "executor": 1,
       "status": 1
   },
   "invalid_task": {
       "name": "New task #2",
       "description": "",
-      "assignee": "",
+      "executor": "",
       "status": ""
   }
 }

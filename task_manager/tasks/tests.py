@@ -6,7 +6,7 @@ from task_manager.users.models import User
 
 
 class TaskCRUDTestCase(TestCase):
-    fixtures = ['users.json', 'auth.json', 'statuses.json', 'tasks.json']
+    fixtures = ['users.json', 'auth.json', 'statuses.json', 'tasks.json', 'labels.json']
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
@@ -79,7 +79,7 @@ class FilterFormTestCase(TestCase):
 
     def test_filter_form(self):
         get_url = reverse('tasks:tasks')
-        query_params = {'assignee': 2}
+        query_params = {'executor': 2}
         response = self.client.get(get_url, query_params)
 
         self.assertEqual(response.status_code, 200)

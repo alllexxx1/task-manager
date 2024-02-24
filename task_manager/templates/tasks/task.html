@@ -24,8 +24,8 @@
                     <div class="col">{{ task.author.get_full_name }}</div>
                   </div>
                   <div class="row p-1">
-                    <div class="col">{% translate "Assignee" %}</div>
-                    <div class="col">{{ task.assignee.get_full_name|default:"" }}</div>
+                    <div class="col">{% translate "Executor" %}</div>
+                    <div class="col">{{ task.executor.get_full_name|default:"" }}</div>
                   </div>
                   <div class="row p-1">
                     <div class="col">{% translate "Status" %}</div>

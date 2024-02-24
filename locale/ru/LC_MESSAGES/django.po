@@ -297,7 +297,7 @@ msgstr "Автор"
 
 #: task_manager/templates/tasks/task.html:27
 #: task_manager/templates/tasks/tasks.html:38
-msgid "Assignee"
+msgid "Executor"
 msgstr "Исполнитель"
 
 #: task_manager/templates/tasks/task.html:31

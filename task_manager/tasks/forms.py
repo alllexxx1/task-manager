@@ -10,7 +10,7 @@ class TaskCreateForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        fields = ['name', 'description', 'status', 'assignee', 'labels']
+        fields = ['name', 'description', 'status', 'executor', 'labels']
 
     name = forms.CharField(
         label=_('Name'),
@@ -26,9 +26,9 @@ class TaskCreateForm(forms.ModelForm):
         queryset=Status.objects.all(),
         label=_('Status'),
     )
-    assignee = forms.ModelChoiceField(
+    executor = forms.ModelChoiceField(
         queryset=User.objects.all(),
-        label=_('Assignee'),
+        label=_('Executor'),
         required=False
     )
     labels = forms.ModelMultipleChoiceField(

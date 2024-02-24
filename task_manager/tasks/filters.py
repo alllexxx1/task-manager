@@ -16,7 +16,7 @@ class TasksFilter(FilterSet):
 
     class Meta:
         model = Task
-        fields = ['name', 'status', 'assignee', 'labels']
+        fields = ['name', 'status', 'executor', 'labels']
 
     name = CharFilter(
         label=_('Task name'),
@@ -30,9 +30,9 @@ class TasksFilter(FilterSet):
         queryset=Status.objects.all()
     )
 
-    assignee = ModelChoiceFilter(
-        label=_('Assignee'),
-        field_name='assignee',
+    executor = ModelChoiceFilter(
+        label=_('Executor'),
+        field_name='executor',
         queryset=User.objects.all()
     )
 
@@ -63,5 +63,5 @@ class TasksFilter(FilterSet):
     def get_assigned_tasks(self, queryset, name, value):
         if value:
             user = self.request.user
-            return queryset.filter(assignee=user)
+            return queryset.filter(executor=user)
         return queryset
