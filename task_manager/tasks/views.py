@@ -13,7 +13,7 @@ from task_manager.custom_utils import (
 )
 from django_filters.views import FilterView
 from task_manager.tasks.filters import TasksFilter
-from task_manager.users.models import User
+from django.contrib.auth import get_user_model
 
 
 class TasksView(AuthRequiredMixin, FilterView):
@@ -39,7 +39,7 @@ class CreateTaskView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         user = self.request.user
-        form.instance.author = User.objects.get(pk=user.pk)
+        form.instance.author = get_user_model().objects.get(pk=user.pk)
         return super().form_valid(form)
 
 

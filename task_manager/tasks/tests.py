@@ -2,14 +2,14 @@ from django.test import TestCase
 from django.urls import reverse
 from task_manager.custom_utils import load_fixture
 from task_manager.tasks.models import Task
-from task_manager.users.models import User
+from django.contrib.auth import get_user_model
 
 
 class TaskCRUDTestCase(TestCase):
-    fixtures = ['users.json', 'auth.json', 'statuses.json', 'tasks.json']
+    fixtures = ['users.json', 'statuses.json', 'tasks.json']
 
     def setUp(self):
-        self.user = User.objects.get(pk=1)
+        self.user = get_user_model().objects.get(pk=1)
         self.client.force_login(self.user)
         self.tasks = load_fixture('tasks_to_create.json')
 
@@ -71,10 +71,10 @@ class TaskCRUDTestCase(TestCase):
 
 
 class FilterFormTestCase(TestCase):
-    fixtures = ['users.json', 'auth.json', 'statuses.json', 'tasks.json']
+    fixtures = ['users.json', 'statuses.json', 'tasks.json']
 
     def setUp(self):
-        self.user = User.objects.get(pk=1)
+        self.user = get_user_model().objects.get(pk=1)
         self.client.force_login(self.user)
 
     def test_filter_form(self):

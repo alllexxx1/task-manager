@@ -7,7 +7,7 @@ from django_filters import (
 )
 from django.utils.translation import gettext as _
 from task_manager.tasks.models import Task
-from task_manager.users.models import User
+from django.contrib.auth import get_user_model
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
 
@@ -33,7 +33,7 @@ class TasksFilter(FilterSet):
     executor = ModelChoiceFilter(
         label=_('Executor'),
         field_name='executor',
-        queryset=User.objects.all()
+        queryset=get_user_model().objects.all()
     )
 
     labels = ModelChoiceFilter(

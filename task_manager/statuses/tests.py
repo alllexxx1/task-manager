@@ -3,14 +3,14 @@ from django.urls import reverse
 from task_manager.custom_utils import load_fixture
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusCreateForm
-from task_manager.users.models import User
+from django.contrib.auth import get_user_model
 
 
 class StatusCRUDTestCase(TestCase):
-    fixtures = ['users.json', 'auth.json', 'statuses.json']
+    fixtures = ['users.json', 'statuses.json']
 
     def setUp(self):
-        self.user = User.objects.get(pk=1)
+        self.user = get_user_model().objects.get(pk=1)
         self.client.force_login(self.user)
         self.statuses = load_fixture('statuses_to_create.json')
 

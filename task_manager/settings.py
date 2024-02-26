@@ -183,10 +183,15 @@ STORAGES = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Default auth settings
+
+AUTH_USER_MODEL = 'users.User'
+
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
 
+# Shell_plus settings
 SHELL_PLUS = 'ipython'
 SHELL_PLUS_PRINT_SQL = True
 

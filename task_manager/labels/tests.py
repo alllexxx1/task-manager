@@ -3,14 +3,14 @@ from django.urls import reverse
 from task_manager.custom_utils import load_fixture
 from task_manager.labels.models import Label
 from task_manager.labels.forms import LabelCreateForm
-from task_manager.users.models import User
+from django.contrib.auth import get_user_model
 
 
 class LabelCRUDTestCase(TestCase):
-    fixtures = ['users.json', 'auth.json', 'labels.json']
+    fixtures = ['users.json', 'labels.json']
 
     def setUp(self):
-        self.user = User.objects.get(pk=3)
+        self.user = get_user_model().objects.get(pk=3)
         self.client.force_login(self.user)
         self.labels = load_fixture('labels_to_create.json')
 

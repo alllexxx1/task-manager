@@ -2,7 +2,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext as _
-from task_manager.users.models import User
+from django.contrib.auth import get_user_model
 from task_manager.users.forms import UserCreateForm
 from task_manager.custom_utils import (AuthRequiredMixin,
                                        UserPermissionMixin,
@@ -10,7 +10,7 @@ from task_manager.custom_utils import (AuthRequiredMixin,
 
 
 class UsersView(ListView):
-    model = User
+    model = get_user_model()
     template_name = 'users/users.html'
     context_object_name = 'users'
     ordering = ['pk']
@@ -32,7 +32,7 @@ class UpdateUserView(AuthRequiredMixin,
                      UserPermissionMixin,
                      SuccessMessageMixin,
                      UpdateView):
-    model = User
+    model = get_user_model()
     form_class = UserCreateForm
     template_name = 'users/update.html'
     success_url = reverse_lazy('users:users')
@@ -44,7 +44,7 @@ class DeleteUserView(AuthRequiredMixin,
                      DeletionProtectHandleMixin,
                      SuccessMessageMixin,
                      DeleteView):
-    model = User
+    model = get_user_model()
     template_name = 'users/delete.html'
     success_url = redirect_url = reverse_lazy('users:users')
     success_message = _('User has been successfully deleted')
