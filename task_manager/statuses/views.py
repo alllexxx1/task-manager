@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusCreateForm
-from task_manager.custom_utils import AuthRequiredMixin, DeletionProtectHandleMixin
+from task_manager.mixins import AuthRequiredMixin, DeletionProtectHandleMixin
 
 
 class StatusesView(AuthRequiredMixin, ListView):

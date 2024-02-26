@@ -4,7 +4,7 @@ from django.views.generic import (
     UpdateView, DeleteView)
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
-from task_manager.custom_utils import AuthRequiredMixin, DeletionProtectHandleMixin
+from task_manager.mixins import AuthRequiredMixin, DeletionProtectHandleMixin
 from task_manager.labels.models import Label
 from task_manager.labels.forms import LabelCreateForm
 

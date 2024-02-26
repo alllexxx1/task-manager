@@ -390,3 +390,11 @@ msgstr "Описание"
 #: task_manager/tasks/filters.py:40
 msgid "Label"
 msgstr "Метка"
+
+#: task_manager/templates/header.html:7
+msgid "Toggle navigation"
+msgstr "Показать скрытый контент"
+
+#: task_manager/templates/footer.html:4
+msgid "Click here"
+msgstr "Важная ссылка"

@@ -4,7 +4,8 @@
 <header class="flex-shrink-0">
   <nav class="navbar navbar-expand-lg bd-navbar p-3 navbar-dark text-bg-dark">
     <a class="navbar-brand" href="{% url 'index' %}">{% bs_icon 'window-stack' size='1.2em' %}{% translate "Task manager" %}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    {% translate "Toggle navigation" as attr %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label={{ attr }}>
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

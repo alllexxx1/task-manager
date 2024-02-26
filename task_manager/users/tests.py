@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from task_manager.users.forms import UserCreateForm
-from task_manager.custom_utils import load_fixture
+import json
+import os
 
 
 class UserRegistrationTestCase(TestCase):
@@ -121,3 +122,8 @@ class UserLoginTestCase(TestCase):
 
         user = response.context['user']
         self.assertFalse(user.is_authenticated)
+
+
+def load_fixture(path):
+    with open(os.path.abspath(f'task_manager/fixtures/{path}'), 'r') as file:
+        return json.loads(file.read())

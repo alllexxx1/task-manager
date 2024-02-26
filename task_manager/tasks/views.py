@@ -7,7 +7,7 @@ from django.views.generic import (
 )
 from task_manager.tasks.models import Task
 from task_manager.tasks.forms import TaskCreateForm
-from task_manager.custom_utils import (
+from task_manager.mixins import (
     AuthRequiredMixin,
     AuthorPermissionMixin
 )

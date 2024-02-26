@@ -4,8 +4,6 @@ from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
-import json
-import os
 
 
 class AuthRequiredMixin(LoginRequiredMixin):
@@ -55,8 +53,3 @@ class AuthorPermissionMixin(UserPassesTestMixin):
     def handle_no_permission(self):
         messages.warning(self.request, self.no_author_permission_msg)
         return redirect(self.tasks_url)
-
-
-def load_fixture(path):
-    with open(os.path.abspath(f'task_manager/fixtures/{path}'), 'r') as file:
-        return json.loads(file.read())

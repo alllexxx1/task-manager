@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from task_manager.custom_utils import load_fixture
+from task_manager.users.tests import load_fixture
 from task_manager.statuses.models import Status
 from task_manager.statuses.forms import StatusCreateForm
 from django.contrib.auth import get_user_model
