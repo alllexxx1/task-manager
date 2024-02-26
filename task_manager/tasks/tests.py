@@ -6,7 +6,7 @@ from task_manager.users.models import User
 
 
 class TaskCRUDTestCase(TestCase):
-    fixtures = ['users.json', 'auth.json', 'statuses.json', 'tasks.json', 'labels.json']
+    fixtures = ['users.json', 'auth.json', 'statuses.json', 'tasks.json']
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
@@ -84,8 +84,8 @@ class FilterFormTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'tasks/tasks.html')
-        self.assertContains(response, 'Harper Lee')
-        self.assertNotContains(response, 'Philip Pullman')
+        self.assertContains(response, 'Reorganize')
+        self.assertNotContains(response, 'Enhance')
 
     def test_filter_form_check_box(self):
         get_url = reverse('tasks:tasks')

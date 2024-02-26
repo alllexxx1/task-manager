@@ -386,3 +386,7 @@ msgstr "Вы разлогинены"
 #: task_manager/tasks/filters.py:21
 msgid "Description"
 msgstr "Описание"
+
+#: task_manager/tasks/filters.py:40
+msgid "Label"
+msgstr "Метка"

@@ -3,7 +3,7 @@ from django_filters import (
     FilterSet, BooleanFilter,
     CharFilter,
     ModelChoiceFilter,
-    ModelMultipleChoiceFilter
+    # ModelMultipleChoiceFilter
 )
 from django.utils.translation import gettext as _
 from task_manager.tasks.models import Task
@@ -36,8 +36,8 @@ class TasksFilter(FilterSet):
         queryset=User.objects.all()
     )
 
-    labels = ModelMultipleChoiceFilter(
-        label=_('Labels'),
+    labels = ModelChoiceFilter(
+        label=_('Label'),
         field_name='labels',
         queryset=Label.objects.all()
     )
