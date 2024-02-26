@@ -9,7 +9,10 @@
 
 # [Task manager](https://task-manager-kli2.onrender.com/)
 
----
+
+![Task manager](https://imgur.com/kxRHfN0.png)
+![Task manager](https://imgur.com/iN5h3e6.png)
+
 
 #### Run the project both locally and on a production server
 ```
@@ -20,10 +23,11 @@ $ make install
 # at this point create a '.env' file and set up
 # configuration variables (example below)
 
+$ make migrate
 $ make dev # start the app locally
 $ make start # command to launch the app on a production server
 
-# for more useful shorcut commands check out the Makefile
+# for more useful shortcut commands check out the Makefile
 ```
 #### .env file example
 ```
