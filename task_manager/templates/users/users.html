@@ -30,7 +30,8 @@
                     <tbody>
                     {% if user.is_authenticated %}
                     {% for user in users %}
-                        <tr {% if user.is_authenticated and user.username == request.user.username %}class="text-warning" title="Current user" {% endif %}>
+                        {% translate "Current user" as value %}
+                        <tr {% if user.is_authenticated and user.username == request.user.username %}class="text-warning" title="{{ value }}" {% endif %}>
                             <td>{{ user.id }}</td>
                             <td>{{ user.username }}</td>
                             <td>{{ user.get_full_name }}</td>

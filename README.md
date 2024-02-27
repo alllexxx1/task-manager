@@ -33,7 +33,7 @@ $ make start # command to launch the app on a production server
 ```
 SECRET_KEY=any_reliable_set_of_characters
 DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/yourdatabase
-DEBUG=True
+DEBUG=True # /False
 ROLLBAR_ACCESS_TOKEN=token_provided_by_roolbar.com
 ```
 

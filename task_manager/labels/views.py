@@ -3,7 +3,7 @@ from django.views.generic import (
     ListView, CreateView,
     UpdateView, DeleteView)
 from django.contrib.messages.views import SuccessMessageMixin
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from task_manager.mixins import AuthRequiredMixin, DeletionProtectHandleMixin
 from task_manager.labels.models import Label
 from task_manager.labels.forms import LabelCreateForm

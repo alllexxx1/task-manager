@@ -398,3 +398,7 @@ msgstr "Показать скрытый контент"
 #: task_manager/templates/footer.html:4
 msgid "Click here"
 msgstr "Важная ссылка"
+
+#: task_manager/templates/users/users.html:33
+msgid "Current user"
+msgstr "Текущий пользователь"
