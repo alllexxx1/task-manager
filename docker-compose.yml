@@ -7,6 +7,7 @@ services:
       context: .
       target: dev
     container_name: task-manager
+    restart: unless-stopped
     volumes:
       - .:/app
     ports:
@@ -14,14 +15,15 @@ services:
     env_file:
       - .env
     depends_on:
-      - database
+      - db
     command: >
       bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
-  database:
+
+  db:
     image: postgres
     container_name: pgdb
-    restart: always
+    restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:

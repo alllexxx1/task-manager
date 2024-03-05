@@ -1,6 +1,4 @@
-FROM python:3.10 as base
-
-SHELL ["/bin/bash", "-c"]
+FROM python:3.10-slim as base
 
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWEITEBYTECODE 1
@@ -17,8 +15,6 @@ RUN poetry config installer.max-workers 1
 FROM base as dev
 
 RUN poetry install --no-interaction --no-ansi
-
-CMD ["python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
 
 
 FROM base as prod

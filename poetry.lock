@@ -336,6 +336,20 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-fontawesome-5"
+version = "1.0.18"
+description = "A utility for using icons in models, forms, and templates."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-fontawesome-5-1.0.18.tar.gz", hash = "sha256:4fc4a7f5d0fe6e10d542ac9f1c143ad5e92aa61c6f310ea297c3c26bfc6001dd"},
+    {file = "django_fontawesome_5-1.0.18-py3-none-any.whl", hash = "sha256:1be340e795a6a68ebd9ba5d75e26bd72a839515c351786ff45e16b90bf50c3a0"},
+]
+
+[package.dependencies]
+Django = ">=2.1"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.0"
 description = "Backport of PEP 654 (exception groups)"
@@ -865,4 +879,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "779634f0fbda0821abd44ed8e07fae26894be78dccd237ae7dda830d7cab8ab6"
+content-hash = "a226f1e67d061a6727035ec1961e0dbabb03ae3cb6f0fbbcf209620245feba4f"
