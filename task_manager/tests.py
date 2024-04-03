@@ -4,7 +4,7 @@ from django.urls import reverse
 
 class ChangeLanguageTestCase(TestCase):
 
-    def test_various_language_using_header(self):
+    def test_various_languages_using_header(self):
         response = self.client.get(reverse('index'), HTTP_ACCEPT_LANGUAGE='ru')
         self.assertContains(response, 'Узнать больше')
 

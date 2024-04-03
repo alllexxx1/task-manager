@@ -19,5 +19,5 @@ from task_manager.api.users import views
 
 
 urlpatterns = [
-    path('', views.UserAPIView.as_view(), name='index'),
+    path('users/', views.UserAPIView.as_view()),
 ]

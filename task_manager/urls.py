@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# from rest_framework import routers
 from task_manager import views
 
+
+# router = routers.DefaultRouter()
+#
+# router.register()
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
@@ -27,6 +32,6 @@ urlpatterns = [
     path('statuses/', include('task_manager.statuses.urls', namespace='statuses')),
     path('tasks/', include('task_manager.tasks.urls', namespace='tasks')),
     path('labels/', include('task_manager.labels.urls', namespace='labels')),
-    path('api/v1/users/', include('task_manager.api.users.urls')),
+    path('api/v1/', include('task_manager.api.urls')),
     path('admin/', admin.site.urls),
 ]

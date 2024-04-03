@@ -36,6 +36,12 @@ DATABASE_URL=postgres://youruser:yourpassword@localhost:5432/yourdatabase
 DEBUG=True # /False
 ROLLBAR_ACCESS_TOKEN=token_provided_by_roolbar.com
 ```
+#### Useful commands for development 
+```
+$ make run-test
+$ make coverage
+$ make shell
+```
 
 ---
 
