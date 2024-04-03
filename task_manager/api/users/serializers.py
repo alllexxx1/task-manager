@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
 
-class UserSerializers(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     """
     Serializer class for serializing User data.
 
@@ -13,4 +13,11 @@ class UserSerializers(serializers.ModelSerializer):
     class Meta:
         """This class specifies metadata options for the serializer."""
         model = get_user_model()
-        fields = '__all__'
+        fields = (
+            'id',
+            'first_name',
+            'last_name',
+            'username',
+            'is_superuser',
+            'is_staff'
+        )

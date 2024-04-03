@@ -1,6 +1,6 @@
 from rest_framework import generics
 from django.contrib.auth import get_user_model
-from task_manager.api.users.serializers import UserSerializers
+from task_manager.api.users.serializers import UserSerializer
 
 
 class UserAPIView(generics.ListAPIView):
@@ -11,4 +11,4 @@ class UserAPIView(generics.ListAPIView):
     provided by Django Rest Framework (DRF).
     """
     queryset = get_user_model().objects.all()
-    serializer_class = UserSerializers
+    serializer_class = UserSerializer

@@ -1,0 +1,8 @@
+{
+    "id": 1,
+    "first_name": "Terry",
+    "last_name": "Pratchett",
+    "username": "Pterry",
+    "is_superuser": false,
+    "is_staff": false
+}
