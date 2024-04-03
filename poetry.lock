@@ -350,6 +350,20 @@ files = [
 Django = ">=2.1"
 
 [[package]]
+name = "djangorestframework"
+version = "3.15.1"
+description = "Web APIs for Django, made easy."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "djangorestframework-3.15.1-py3-none-any.whl", hash = "sha256:3ccc0475bce968608cf30d07fb17d8e52d1d7fc8bfe779c905463200750cbca6"},
+    {file = "djangorestframework-3.15.1.tar.gz", hash = "sha256:f88fad74183dfc7144b2756d0d2ac716ea5b4c7c9840995ac3bfd8ec034333c1"},
+]
+
+[package.dependencies]
+django = ">=3.0"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.0"
 description = "Backport of PEP 654 (exception groups)"
@@ -879,4 +893,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a226f1e67d061a6727035ec1961e0dbabb03ae3cb6f0fbbcf209620245feba4f"
+content-hash = "aba51f1e10de1f857aa41802a3089597d2856b5b9fd7b7ccfc5e33ed553225e6"

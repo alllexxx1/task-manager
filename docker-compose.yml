@@ -2,10 +2,11 @@ version: "3.9"
 
 services:
   app:
-    build:
-      dockerfile: Dockerfile
-      context: .
-      target: dev
+    image: okerdocker11/task-manager:1.2.0-dev
+#    build:
+#      dockerfile: Dockerfile
+#      context: .
+#      target: dev
     container_name: task-manager
     restart: unless-stopped
     volumes:

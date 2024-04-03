@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from task_manager import views
 
+
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('login/', views.LoginUserView.as_view(), name='login'),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('statuses/', include('task_manager.statuses.urls', namespace='statuses')),
     path('tasks/', include('task_manager.tasks.urls', namespace='tasks')),
     path('labels/', include('task_manager.labels.urls', namespace='labels')),
+    path('api/v1/users/', include('task_manager.api.users.urls')),
     path('admin/', admin.site.urls),
 ]

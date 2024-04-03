@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_filters',
     'fontawesome_5',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
